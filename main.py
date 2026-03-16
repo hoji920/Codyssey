@@ -1,12 +1,12 @@
 import os
 
 def main():
-    # 1. 설치 확인 출력
+    # 설치 확인 출력
     print("Hello Mars")
     
     file_path = 'mission_computer_main.log'
     
-    # 2. 파일 존재 여부 확인 및 예외 처리
+    # 파일 존재 여부 확인 및 예외 처리
     try:
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"{file_path} 파일을 찾을 수 없습니다.")

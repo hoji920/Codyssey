@@ -15,6 +15,12 @@ def main():
             print(f"\n--- {file_path} 내용 출력 ---")
             content = file.read()
             print(content)
+
+        # 역순 출력
+        with open(file_path, 'r', encoding='utf-8') as revFile:
+            lines = revFile.readlines()
+            for line in reversed(lines):  # 역순으로 하나씩 꺼냄
+                print(line.strip())
             
     except FileNotFoundError as e:
         print(f"오류: {e}")

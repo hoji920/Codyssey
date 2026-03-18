@@ -13,14 +13,16 @@ def main():
 
         with open(file_path, 'r', encoding='utf-8') as file:
             print(f"\n--- {file_path} 내용 출력 ---")
-            content = file.read()
-            print(content)
+            # content = file.read() --read는 내용을 전부 메모리에 담기 때문에 file을 사용하여 한줄씩 메모리에 올림
+            for contents in file:
+                print(contents.strip())
 
         # 역순 출력
         with open(file_path, 'r', encoding='utf-8') as revFile:
-            lines = revFile.readlines()
-            for line in reversed(lines):  # 역순으로 하나씩 꺼냄
-                print(line.strip())
+            print(f"\n--- {file_path} 역순 내용 출력 ---")
+            content = revFile.readlines()
+            for contents in reversed(content):  # 역순으로 하나씩 꺼냄
+                print(contents.strip())
             
     except FileNotFoundError as e:
         print(f"오류: {e}")

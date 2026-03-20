@@ -37,3 +37,14 @@ with open(file_path,'r',encoding='utf-8') as file:
     
     for highList in high_value_items:
         print(highList)
+
+# 인화서 지수 0.7이상 csv 저장 및 출력
+with open('Mars_Base_Inventory_danger.csv','w',newline='',encoding='utf-8') as dangerFile:
+    writer = csv.writer(dangerFile)
+    writer.writerows(high_value_items) 
+
+with open('Mars_Base_Inventory_danger.csv','r',encoding='utf-8') as dangerFile:
+    print("\n----- Mars_Base_Inventory_danger.csv 출력 -----")
+    for row in dangerFile:
+        print(row.strip())
+

@@ -21,11 +21,19 @@ with open(file_path,'r',encoding='utf-8') as file:
 
     # 인화성이 높은 순으로 정렬
     list.sort(key=lambda x: x[4],reverse=True)
-    print(f"\n----- {file_path} 오름차순 정렬 -----")
+    print(f"\n----- {file_path} 내림차순 정렬 -----")
     for sortList in list:
         print(sortList)
 
     # 인화성 지수 0.7이상 출력
+    high_value_items = []
     print(f"\n----- {file_path} 인화성 지수가 0.7 이상 출력 -----")
-
+    for row in list:
+        try:
+            if float(row[4]) >= 0.7:
+                high_value_items.append(row)
+        except ValueError:
+            pass
     
+    for highList in high_value_items:
+        print(highList)

@@ -1,4 +1,5 @@
 import csv
+import pickle
 
 file_path = 'Mars_Base_Inventory_List.csv'
 
@@ -47,4 +48,15 @@ with open('Mars_Base_Inventory_danger.csv','r',encoding='utf-8') as dangerFile:
     print("\n----- Mars_Base_Inventory_danger.csv 출력 -----")
     for row in dangerFile:
         print(row.strip())
+
+# 정렬된 리스트 pickle 사용해서 객체 자체를 바이너리 파일로 저장
+with open('list.pickle','wb') as f:
+    pickle.dump(list, f)
+
+# pickle 모듈로 저장된 파일을 불러와 출력
+with open('list.pickle', 'rb') as f:
+    print("\n----- 바이너리 파일 출력 -----")
+    data = pickle.load(f)
+    for row in data:
+        print(row)
 

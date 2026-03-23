@@ -1,7 +1,7 @@
 import csv
 import pickle
 
-file_path = 'Mars_Base_Inventory_List.csv'
+file_path = 'Q3/Mars_Base_Inventory_List.csv'
 
 with open(file_path,'r',encoding='utf-8') as file:
 
@@ -40,21 +40,21 @@ with open(file_path,'r',encoding='utf-8') as file:
         print(highList)
 
 # 인화서 지수 0.7이상 csv 저장 및 출력
-with open('Mars_Base_Inventory_danger.csv','w',newline='',encoding='utf-8') as dangerFile:
+with open('Q3/Mars_Base_Inventory_danger.csv','w',newline='',encoding='utf-8') as dangerFile:
     writer = csv.writer(dangerFile)
     writer.writerows(high_value_items) 
 
-with open('Mars_Base_Inventory_danger.csv','r',encoding='utf-8') as dangerFile:
+with open('Q3/Mars_Base_Inventory_danger.csv','r',encoding='utf-8') as dangerFile:
     print("\n----- Mars_Base_Inventory_danger.csv 출력 -----")
     for row in dangerFile:
         print(row.strip())
 
 # 정렬된 리스트 pickle 사용해서 객체 자체를 바이너리 파일로 저장
-with open('Mars_Base_Inventory_List.bin','wb') as f:
+with open('Q3/Mars_Base_Inventory_List.bin','wb') as f:
     pickle.dump(list, f)
 
 # pickle 모듈로 저장된 파일을 불러와 출력
-with open('Mars_Base_Inventory_List.bin', 'rb') as f:
+with open('Q3/Mars_Base_Inventory_List.bin', 'rb') as f:
     print("\n----- 바이너리 파일 출력 -----")
     data = pickle.load(f)
     for row in data:

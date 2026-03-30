@@ -1,4 +1,5 @@
 import random
+import datetime
 
 class DummySensor:
     def __init__(self):
@@ -17,21 +18,29 @@ class DummySensor:
         }
     
     def get_env(self):
+        timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        log_entry = f"[{timestamp}] Data: {self.env_values}\n"
+        
+        # 'a' : 파일이 없으면 새로 만들고, 있으면 끝에 덧붙인다.
+        with open('Q6/mars_base_env.log', 'a', encoding='utf-8') as f:
+            f.write(log_entry)
+
         return self.env_values
     
 
-if __name__ == "__main__":
-    # 인스턴스화
-    ds = DummySensor()
 
-    # 데이터 설정 (set_env 호출)
-    ds.set_env()
+# 인스턴스화
+ds = DummySensor()
 
-    # 데이터 확인 (get_env 호출 및 출력)
-    env_data = ds.get_env()
-    print("\n=== 현재 화성 기지 환경 정보 ===")
-    for key, value in env_data.items():
-        print(f"{key}: {value}")
+# 데이터 설정 (set_env 호출)
+ds.set_env()
+
+# 데이터 확인 (get_env 호출 및 출력)
+env_data = ds.get_env()
+print("\n=== 현재 화성 기지 환경 정보 ===")
+
+for key, value in env_data.items():
+    print(f"{key} : {value}")
 
 
 
